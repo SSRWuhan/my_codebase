@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#echo "what was your name could please tell me again?"
+#echo "what was your name could please tell me again or not?"
 
 #read name
 
