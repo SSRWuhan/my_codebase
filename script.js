@@ -1057,7 +1057,7 @@ function checker(board, value) {
     }
   }
 
-  //assignment idk: handmademap 
+  //assignment unknown: handmademap 
   let arr12 = [1, 2, 4, 7, 9 ,0, 6, 2];
 
   function handmademap(arr, func){
@@ -1069,4 +1069,50 @@ function checker(board, value) {
     }
     return newarr;
   }
-  console.log(handmademap(arr12, function(num){ num % 2 === 0; }));
+  console.log(handmademap(arr12, function(num){ return num % 2 === 0; }));
+  console.log(handmademap(arr12, function(num){ return num * 2; }));
+
+  function CHARECTERMAKER(name = null, age = null, power = null, family = null){
+    this.name = name;
+    this.age = age;
+    this.power = power;
+    this.family = family;
+  }
+  let SSRW = new CHARECTERMAKER( null , 14, "programming", "reality bender");
+  console.log(SSRW);
+  console.log(null_entity = new CHARECTERMAKER());
+
+
+  // assignment 20: stopwatch constructor
+  function Stopwatch(){
+    let running = false;
+    let time = {
+        seconds: 0
+    };
+    this.duration = 0;
+
+    Object.defineProperty(this, 'start', {
+        get: function(){
+            if(!running){
+                time.seconds = Date.now();
+                running = true;
+            }
+            else{
+                throw new Error("stopwatch has already been started");
+            }
+                
+            }
+    })
+
+    Object.defineProperty(this, 'stop', {
+        get: function(){
+            if(running){
+                this.duration =(Date.now() - time.seconds) / 1000;
+                running = false;
+            }
+            else{
+                throw new Error("stopwatch has already been stoped");
+            }
+            }
+    })
+  }

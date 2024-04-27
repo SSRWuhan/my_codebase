@@ -1843,40 +1843,479 @@ function myFunc(prevValue, num, i) {
 // console.log(firstObstacle)
 // console.log(this.document)
 
-const video = {
-    title: "Amader Title",
-    tags: ["a", "b", "c"],
-    showTags() {
-      const self = this;
-      this.tags.forEach(function (tag) {
-        console.log(this);
-        console.log(this.title, tag);
-      }, this);
-    },
-  };
+// const video = {
+//     title: "Amader Title",
+//     tags: ["a", "b", "c"],
+//     showTags() {
+//       const self = this;
+//       this.tags.forEach(function (tag) {
+//         console.log(this);
+//         console.log(this.title, tag);
+//       }, this);
+//     },
+//   };
   
   // video.showTags();
   
   // Changing this: Call, apply
   // Solution as all the methods dont have the thisArg
   
-  function test() {}
+//   function test() {}
   
-  const person = {
-    fullName: function (age, birthday) {
-      return this.firstName + " " + this.lastName + " " + age + ", " + birthday;
-    },
-  };
+//   const person = {
+//     fullName: function (age, birthday) {
+//       return this.firstName + " " + this.lastName + " " + age + ", " + birthday;
+//     },
+//   };
   
-  const person1 = {
-    firstName: "John",
-    lastName: "Doe",
-  };
-  const person2 = {
-    firstName: "Mary",
-    lastName: "Doe",
-  };
+//   const person1 = {
+//     firstName: "John",
+//     lastName: "Doe",
+//   };
+//   const person2 = {
+//     firstName: "Mary",
+//     lastName: "Doe",
+//   };
   
-  console.log(person.fullName.call(person2, 30, "1 Dec"));
+//   console.log(person.fullName.call(person2, 30, "1 Dec"));
   
-  console.log(person.fullName.apply(person2, [30, "1 Dec"]));
+//   console.log(person.fullName.apply(person2, [30, "1 Dec"]));
+
+ 
+// const video = {
+//   title: "Amader Title",
+//   tags: ["a", "b", "c"],
+//   showTags() {
+//     const self = this;
+//     this.tags.forEach(function (tag) {
+//       console.log(this);
+//       console.log(this.title, tag);
+//     }, this);
+//   },
+// };
+
+// video.showTags();
+
+// Changing this: Call, apply
+// Solution as all the methods dont have the thisArg
+
+// function test() {}
+
+// const person = {
+//   fullName: function (age, birthday) {
+//     return this.firstName + " " + this.lastName + " " + age + ", " + birthday;
+//   },
+// };
+
+// const person1 = {
+//   firstName: "John",
+//   lastName: "Doe",
+// };
+// const person2 = {
+//   firstName: "Mary",
+//   lastName: "Doe",
+// };
+
+// console.log(person.fullName.call(person2, 30, "1 Dec"));
+
+// console.log(person.fullName.apply(person2, [30, "1 Dec"]));
+
+// const button = document.getElementById("btn");
+
+// button.addEventListener("click", function () {
+//   console.log(this);
+//   console.dir(this)
+// });
+
+// const video = {
+//   title: "Amader Title",
+//   tags: ["a", "b", "c"],
+//   showTags() {
+//     console.log(this)
+//     this.tags.forEach((tag) => {
+//       console.log(this.title, tag);
+//     });
+//   },
+// };
+
+// video.showTags();
+
+// Changing this: Call, apply
+// Solution as all the methods dont have the thisArg
+
+// const person = {
+//   fullName: function (age, birthday) {
+//     console.log(this);
+//     return this.firstName + " " + this.lastName + " " + age + ", " + birthday;
+//   },
+// };
+
+// const person1 = {
+//   firstName: "John",
+//   lastName: "Doe",
+// };
+
+// let fullname = person.fullName.bind(person1);
+
+// console.log(fullname(10, "Dec 19"));
+
+// const person2 = {
+//   firstName: "Mary",
+//   lastName: "Doe",
+// };
+
+// person1.fullName()
+
+// console.log(person.fullName.call(person1, 10, "Jan 10"))
+
+// console.log(person.fullName.call(person2, 12, "Feb 10"))
+
+// const args = [10, "Jan 10"]
+
+// console.log(person.fullName.apply(person1, args));
+
+// console.log(person.fullName.apply(person2, args))
+
+// function test(){
+//   console.log(this)
+// }
+// test()
+// window.test()
+// console.log(window)
+
+// const button = document.getElementById("btn")
+
+// button.addEventListener("click", function(){
+//   console.log(this)
+//   console.dir(this)
+// })
+
+
+// Objects
+
+// 01. Object Literals
+
+// 02. Factories
+
+// 03. Constructors
+
+// 04. Constructor Property
+// function Book(pageNumber, name) {
+//   this.page = pageNumber;
+//   this.name = name;
+//   this.read = function () {
+//     console.log(`Reading ${this.name}. It has ${this.page} pages`);
+//   };
+// }
+
+// const book1 = new Book(70, "You Dont Know JS Yet");
+
+// function createBook(name) {
+//   return {
+//     name: name,
+//     read: function () {
+//       console.log("Reading");
+//     },
+//   };
+// }
+
+// const book2 = createBook("Eloquent JS");
+
+// book1.constructor
+// book2.constructor
+
+// let x = {};
+// meaning new Object()
+// new Number()
+// etc
+
+// let y = new Object();
+
+// 06. Functions are Objects too!!
+
+// function Book(pageNumber, name) {
+//     console.log(this);
+//     this.page = pageNumber;
+//     this.name = name;
+//     this.read = function () {
+//       console.log(`Reading ${this.name}. It has ${this.page} pages`);
+//     };
+//     console.log(this);
+//   }
+//   // let book1 =new Book(10, "JS"); // {}
+//   let book2 = Book.call({}, 15, "Python")
+//   let book3 = Book.apply({}, [20, "C"])
+  
+  
+  // // Book.constructor ---> check it
+  
+  // const Khata = new Function(
+  //   "pageNum",
+  //   "name",
+  //   `
+  //   this.name = name;
+  //   this.page = pageNum;
+  //   this.write = function(){
+  //     console.log("Writing")
+  //   }
+  // `);
+  // // console.log(Khata);
+  
+  // let khata1 = new Khata(10, "my khata")
+  
+  // console.log(khata1.write())
+  
+  // const Book1 = new Function(
+  //   "pageNumber",
+  //   "name",
+  //   `
+  // this.page = pageNumber;
+  //   this.name = name;
+  //   this.read = function () {
+  //     console.log("Reading")
+  //   }
+  // `
+  // );
+  
+  // const newBook = new Book1(10, "hey")
+  
+  // console.log(newBook)
+  
+  // Now deep into "new"
+  
+  // Book.call({}, 10, "Hello")
+  // Book.apply({}, [10, "Hello"])
+  // Book.apply(window, [10, "Hello"])
+  // Book.apply({}, [10, "Hello"])
+  
+  // let num = new Number(5)
+  // let num1 = 5
+  // new Boolean()
+  // new String()
+  
+  // 07. Primitive vs Reference Types
+  
+  // 08. Adding or removing properties
+//   const myObj = {
+//     name: "amar obj"
+//   }
+//   myObj.age = 10
+  
+//   myObj = new Object()
+  
+//   const z = 15
+//   z = z + 1
+  // console.log(z)
+  
+  // console.log(myObj)
+
+
+  // 09. Enumerating Properties
+
+// to enumerate
+// for in loop
+
+// to get all the keys
+// Object.keys()
+
+// const myObj = {
+//   name: "amar obj",
+//   age: 29
+// }
+
+// console.log(Object.keys(myObj))
+
+// to check
+// in obj
+
+// if('name' in myObj) console.log("yaaay")
+
+// 10. Abstraction
+// Hide the details, show only the essentials
+
+// function Book(pageNumber, name) {
+//     console.log(this);
+//     this.page = pageNumber;
+//     this.name = name;
+//     let defaultPageSize = "A4";
+//     let computePageCost = function () {
+//       // ....
+//       console.log(defaultPageSize);
+//     };
+//     this.buy = function (numOfCopy) {
+//       computePageCost();
+//     };
+//     this.read = function () {
+//       console.log(`Reading ${this.name}. It has ${this.page} pages`);
+//     };
+//     console.log(this);
+//   }
+  
+  
+//   // const book = new Book(10, "YDKJSY");
+  
+//   // console.log(book);
+//   // book.buy()
+  
+//   // 11. Private properties and methods
+//   // Using local variable
+  
+//   // 12. Getters and Setters
+  
+//   function Book(pageNumber, name) {
+//     this.page = pageNumber;
+//     this.name = name;
+//     let defaultPageSize = "A4";
+//     let computePageCost = function () {
+//       // ....
+//       console.log(defaultPageSize);
+//     };
+  
+//     // this.text = "Fantastic Book"
+  
+//     Object.defineProperty(this,"text",{
+//       value: "Nice Book!"
+//     })
+  
+//     let imageURL = "www.faltu.com"
+  
+//     Object.defineProperty(this, "image", {
+//       get : function (){
+//         return imageURL
+//       }
+//     })
+//   }
+  
+//   const book = new Book(10, "YDKJSY")
+//   const book2 = new Book(15, "Faltu Book")
+  
+  
+  
+//   console.log(book)
+//   console.log(book2)
+  
+  
+  
+  
+//   // Define object
+//   const obj = {counter : 0};
+  
+//   // Define setters and getters
+//   Object.defineProperty(obj, "reset", {
+//     get : function () {this.counter = 0;}
+//   });
+  
+  
+  
+  
+  
+  
+  
+//   Object.defineProperty(obj, "increment", {
+//     get : function () {this.counter++;}
+//   });
+//   Object.defineProperty(obj, "decrement", {
+//     get : function () {this.counter--;}
+//   });
+  
+  
+  
+//   Object.defineProperty(obj, "add", {
+//     set : function (value) {
+//       console.log(value)
+//       this.counter += value;}
+//   });
+  
+  
+  
+  
+//   Object.defineProperty(obj, "subtract", {
+//     set : function (value) {this.counter -= value;}
+//   });
+  
+//   // Play with the counter:
+//   obj.reset;
+//   obj.add = 5;
+//   obj.subtract = 1;
+//   obj.increment;
+//   obj.decrement;
+
+
+ 
+// 01. Inheritance
+// Circle, Square   <-- Shape
+
+// 02. Prototypes and Prototypical Inheritance
+
+// let x = {};
+
+// console.log(Object.getPrototypeOf(x));
+// console.log(x.__proto__)
+
+// let y = "hello";
+// console.log(Object.getPrototypeOf(y));
+// console.log(y.constructor);
+// console.log(y.toUpperCase());
+// console.log(Object.getPrototypeOf(y));
+// compare
+
+// 03. Multilevel Inheritance
+
+// function Student(rollNumber) {
+//   this.roll = rollNumber;
+//   this.toString = function () {
+//     console.log("Uhu! I will not work as expected.");
+//   };
+// }
+// let x = 10
+
+// const shafin = new Student(10);
+// console.log(Object.getPrototypeOf(shafin));
+// using constructor function
+
+// 04. Property Descriptors
+
+// Property attributes
+// let person = { name: "Aninda", age: "Bolbo na" };
+
+// for (let key in person) console.log(key);
+
+// // Or
+// console.log(Object.keys(person));
+
+// In JS, our properties have attributes attached to them.
+
+// let text = "hello"
+
+// for (let x in text) console.log(x, text[x])
+// for (let x of text) console.log(x)
+
+// let person = { name: "Aninda" };
+// let objectBase = Object.getPrototypeOf(person);
+// // // let's see the attributes attached to the 'toString' property/method.
+// let descriptor = Object.getOwnPropertyDescriptor(objectBase, "toString");
+
+// console.log(descriptor);
+// console.log(Object.keys(person))
+
+// configurable: true ---> means you can delete this member if you want to.
+// enumerable: false --->
+
+// Object.defineProperty(person, "name", {
+//   writable: false, // becomes Read-only
+//   enumerable: false, // will not show up in Object.keys
+//   configurable: true, // cannot delete
+// });
+// person.name = "Aditya";
+
+
+// delete person.name;
+// console.log(person);
+
+// console.log(Object.keys(person));
+
+// 05. Constructor Prototypes
+// obj.__proto__ == Object.prototype
+// also with arrays
+
+// let person = {}
