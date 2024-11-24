@@ -1,0 +1,71 @@
+<!DOCTYPE HTML> <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1 id="title">survey form</h1>
+      <p id="description">this is a survey form for finding out how much of today's population has intrest in science</p>
+      <form id="survey-form">
+        <fieldset>
+        <label>enter your name: <input id="name" type="text" required/></label>
+        <label>enter your email: <input id="email" type="email" required/></label>
+         <label>enter your age: <input id="number" type="number" required/></label>
+        </fieldset>
+      </form>
+      
+    </div>
+  </body>
+</html>
+<!--problematic version-->
+<!-- <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1 id="title">survey form</h1>
+      <p id="description">this is a survey form for finding out how much of today's population has intrest in science</p>
+      <form method="POST" id="survey-form">
+        <fieldset>
+        <label id="name-label">enter your name: <input id="name" type="text" required placeholder="your name"/></label>
+        <label id="email-label">enter your email: <input id="email" type="email" required placeholder="example@example.com"/></label>
+         <label id="number-label">enter your age: <input id="number" type="number" placeholder="13" required min=13 max=100 /></label>
+         
+        </fieldset>
+        <fieldset>
+          <select id="dropdown">
+            <option>do you like science</option>
+            <option >Yes</option>
+            <option >No</option>
+          </select>
+        </fieldet>
+        <fieldset>
+          <legend>do you want to work in the field of science</legend>
+          <label> <input type="radio" value="ed" name="ans"/>yes</label>
+          <label> <input type="radio" name="ans" value="edx"/>No</label>
+        </fieldset>
+        <fieldset>
+          <legend>if so, then in which field? pick one of the following</legend>
+          <label><input type="checkbox" value="1"/>electrical enginnearing</label>
+          <label><input type="checkbox" value="2"/>robotics enginearing</label>
+          <label><input type="checkbox" value="3"/>chemistry</label>
+          <label><input type="checkbox" value="4"/>physics</label>
+          <label><input type="checkbox" value="5"/>other</label>
+        </fieldset>
+        <fieldset>
+          <label for="bio">Provide a description:
+          <textarea rows="3" cols="30" placeholder="I like robotics because..."></textarea>
+        </fieldset>
+        <input type="Submit" id="submit"/>
+        
+      </form>
+      
+    </div>
+  </body>
+</html> -->

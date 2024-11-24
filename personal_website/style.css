@@ -1,0 +1,27 @@
+#header{
+    /* display: flex; */
+    padding: 0;
+    margin: 0;
+    /* background-color: rgb(17, 13, 53); */
+    background-color: black;
+    color: rgb(241, 234, 234);
+    align-content: center;
+}
+#menu{
+    display: flex;
+    /* padding: 0;
+    margin: 0; */
+    /* background-color: rgb(17, 13, 53); */
+    background-color: red;
+    align-content: flex-end;
+}
+.menubarbuttons{
+    /* display: flex; */
+    background-color: rgb(17, 13, 53);
+    /* align-content: space-around; */
+
+}
+body{
+    /* display: flex; */
+    background-color: rgb(17, 13, 53);
+}

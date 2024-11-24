@@ -2290,7 +2290,7 @@ function myFunc(prevValue, num, i) {
 // for (let x in text) console.log(x, text[x])
 // for (let x of text) console.log(x)
 
-// let person = { name: "Aninda" };
+// let person = { name: "Aninda" };  
 // let objectBase = Object.getPrototypeOf(person);
 // // // let's see the attributes attached to the 'toString' property/method.
 // let descriptor = Object.getOwnPropertyDescriptor(objectBase, "toString");
@@ -2319,3 +2319,321 @@ function myFunc(prevValue, num, i) {
 // also with arrays
 
 // let person = {}
+
+
+
+// 06. Prototype vs Instance Members
+// function Student(rollNumber){
+//     // instance members
+//     this.roll = rollNumber;
+
+//     // this.attendClass = function(){
+
+//     // }
+
+// }
+
+// prototype members
+// Student.prototype.attendClass = function(){
+//     console.log("Attending!")
+// }
+
+// const shafin = new Student(6)
+// const supto = new Student(5)
+
+// 07. Iterating instance and prototype members
+
+// function Student(rollNumber) {
+//     // instance members
+//     this.roll = rollNumber;
+  
+//     // this.attendClass = function(){
+//     // }
+//   }
+//   // prototype members
+//   Student.prototype.attendClass = function () {
+//     console.log("attending");
+//   };
+  
+//   const shafin = new Student(6);
+//   const supto = new Student(5);
+  
+  // Returns instance members
+  // console.log(Object.keys(shafin))
+  
+  // Returns all members (instance + prototype)
+  // for (let key in shafin) console.log(key)
+  
+//   console.log(supto.hasOwnProperty("roll"));
+//   console.log(supto.hasOwnProperty("attendClass"));
+  
+  // 08. Dont modify the built in Objects
+  // Object.prototype.toString = function () {
+  //   console.log("yaaaaaayayyayayay!");
+  // };
+  
+//   console.log(Object.prototype);
+//   let x = 4;
+//   console.log(x.toString);
+  
+  // 09. Exercise (Stopwatch with Prototype)
+  
+  // function Stopwatch(){
+  //     let startTime
+  //     start(){
+  //         // 
+  //     }
+  // }
+
+
+  // 01. Creating your own Prototypical inheritance
+
+// function Shape() {}
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function Circle(radius) {
+//   this.radius = radius;
+// }
+
+// Circle.prototype.duplicate = function () {
+//   console.log("duplicating");
+// };
+// function Square() {
+//   ...
+// }
+
+// Square.prototype.duplicate = function () {
+//   console.log("duplicating");
+// };
+
+
+
+// Circle.prototype = Object.create(Object.prototype); // objectBase
+
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.draw = function () {
+//   console.log("draw");
+// };
+// const c = new Circle(1);
+// const sq = new Square();
+// console.log(Circle.prototype);
+// console.log(c.constructor)
+// // Circle.prototype.duplicate = function () {
+// //   console.log("duplicate");
+// // };
+
+// Square.prototype.duplicate = function () {};
+
+// const c = new Circle(1);
+// const s = new Shape();
+// --------------------------------
+// 02. Resetting the Constructor
+
+// Circle.prototype.constructor = Circle;
+// new Circle.prototype.constructor() => new Circle()
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.constructor = Circle;
+// console.log(Circle.prototype);
+// const c = new Circle(1);
+// console.log(c.constructor)
+
+
+
+// 01. Creating your own Prototypical inheritance
+
+// function Shape() {}
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function Circle(radius) {
+//   this.radius = radius;
+// }
+
+// Circle.prototype.duplicate = function () {
+//   console.log("duplicating");
+// };
+// function Square() {
+//   // ...
+// }
+
+// Square.prototype.duplicate = function () {
+//   console.log("duplicating");
+// };
+
+// Circle.prototype = Object.create(Object.prototype); // objectBase
+
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.constructor = Circle;
+// Square.prototype = Object.create(Shape.prototype);
+// Square.prototype.constructor = Square;
+// Circle.prototype.draw = function () {
+//   console.log("draw");
+// };
+// const c = new Circle(1);
+// const sq = new Square();
+// console.log(Circle.prototype);
+// console.log(c.constructor)
+// // Circle.prototype.duplicate = function () {
+// //   console.log("duplicate");
+// // };
+
+// Square.prototype.duplicate = function () {};
+
+// const c = new Circle(1);
+// const s = new Shape();
+// --------------------------------
+// 02. Resetting the Constructor
+
+// Circle.prototype.constructor = Circle;
+// new Circle.prototype.constructor() => new Circle()
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.constructor = Circle;
+// console.log(Circle.prototype);
+// const c = new Circle(1);
+// console.log(c.constructor)
+
+// 03. Calling the Super Constructor
+// function Shape(color) {
+//   this.color = color; // look
+// }
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function Circle(radius, color) {
+//   Shape.call(this, color);
+//   this.radius = radius;
+// }
+
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.constructor = Circle;
+
+// function Square(color) {
+//   Shape.call(this, color);
+// }
+
+// const c = new Circle(1, "blue"); // {}
+// const s = new Square("Red");
+
+// 04. Intermediate Function Inheritance
+// extend
+
+// function Shape(color) {
+//   this.color = color; // look
+// }
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function extend(Child, Parent) {
+//   Child.prototype = Object.create(Parent.prototype);
+//   Child.prototype.constructor = Child;
+// }
+// function Circle(radius, color) {
+//   Shape.call(this, color);
+//   this.radius = radius;
+// }
+
+// extend(Circle, Shape);
+
+// Circle.prototype.draw = function () {
+//   console.log("draw");
+// };
+
+// function Square(size) {
+//   this.size = size;
+// }
+
+// extend(Square, Shape);
+
+
+// 5. Method Overriding
+// Meaning reimplementing a method in child object.
+
+// function extend(Child, Parent) {
+//   Child.prototype = Object.create(Parent.prototype);
+//   Child.prototype.constructor = Child;
+// }
+
+// function Shape() {}
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function Circle() {}
+
+// extend(Circle, Shape);
+// // OVerriding duplicate method
+// Circle.prototype.duplicate = function () {
+//     // Shape.prototype.duplicate(); // if you want to call it from Shape prototype
+//     Shape.prototype.duplicate.call(this); // if you want to call it with `this`
+
+//   console.log("duplicating Circle");
+// };
+
+// const c = new Circle();
+
+// 06. Polymorphism
+// function extend(Child, Parent) {
+//   Child.prototype = Object.create(Parent.prototype);
+//   Child.prototype.constructor = Child;
+// }
+
+// function Shape() {}
+
+// Shape.prototype.duplicate = function () {
+//   console.log("duplicate");
+// };
+
+// function Circle() {}
+// extend(Circle, Shape);
+
+// // OVerriding duplicate method
+// Circle.prototype.duplicate = function () {
+//   console.log("duplicating Circle");
+// };
+
+// function Square() {}
+
+// extend(Square, Shape);
+
+// Square.prototype.duplicate = function () {
+//   console.log("duplicating Square");
+// };
+
+// let shapes = [new Circle(), new Square()];
+
+// let c = {};
+// function duplicateSth(obj) {}
+// duplicateSth();
+// for of loop
+
+// for (let shape of shapes) {
+//   shape.duplicate();
+// }
+
+// 07. When to use inheritance
+
+//  Example : animal --> human, birds, fish
+
+// animal ---> canEat(), 
+
+
+// animal --> stholochor(canWalk()), jolochor(canSwim)
+// human <=== stholochor
+// birds <=== stolochor
+
+// fish <=== jolochor
+
+
+
+// Solution: Composition Pattern
+// canEat, canSwim, canWalk

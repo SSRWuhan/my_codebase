@@ -1,0 +1,56 @@
+.main{
+  width: 80%;
+  margin: 0 auto;
+  background-color: blue;
+  max-width: 500px;
+  /* max-height: 1000px; */
+}
+label{
+  display: block;
+  margin:0.5em 0
+}
+h1, p {
+  text-align: center
+}
+input {
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: green
+}
+/*problematic version*/
+/* body{
+  color: #ffffff;
+  background: gray
+}
+.main{
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 30, 0.8);
+  max-width: 500px;
+  max-height: 1000px;
+}
+label{
+  display: block;
+  margin:0.5em 0
+}
+h1, p {
+  text-align: center
+}
+input, select[id="dropdown"], textarea{
+  border-radius: 5px;
+  border: 1px solid white;
+  background: linear-gradient(90deg,  lightblue, cyan)
+}
+input[type="Submit"]{
+  display: block;
+  width: 60%;
+  margin: 1em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #3b3b4f;
+  border-color: white;
+  min-width: 300px;
+}
+fieldset{
+  border:0
+} */

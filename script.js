@@ -1,5 +1,5 @@
-console.log("hello world");
-console.log("wuhan");
+console.log("hello world"); 
+console.log("wuhan"); 
 console.log(typeof("wuhan"));
 //number
 let num = 92099228
@@ -1116,3 +1116,394 @@ function checker(board, value) {
             }
     })
   }
+
+  // assignment 21: stopwatch constructor with prototype
+
+  function PStopwatch(){
+    let running = false;
+    let time = {
+        seconds: 0
+    };
+    this.duration = 0;
+
+   PStopwatch.prototype.start = function(){
+               if(!running){
+                time.seconds = Date.now();
+                running = true;
+            }
+            else{
+                throw new Error("stopwatch has already been started");
+            }
+                
+            }
+
+   PStopwatch.prototype.stop = function(){
+            if(running){
+                this.duration =(Date.now() - time.seconds) / 1000;
+                running = false;
+            }
+            else{
+                throw new Error("stopwatch has already been stoped");
+            }
+            }
+  }
+   
+  function person(){
+    Object.defineProperty(this, "name", {
+        value: "aninda",
+        configurable: true,
+        enumerable: true,
+        writable: false
+    })
+};
+
+  function dopalganger(level){
+    Object.defineProperty(this, "danger level", {
+        value: level,
+        configurable: true,
+        enumerable: true,
+        writable: false
+    })
+  };
+
+  dopalganger.prototype = Object.create(person.prototype);
+  dopalganger.prototype.constructor = dopalganger;
+  let aninda = person()
+
+let imposter = dopalganger("HIGH");
+console.log(dopalganger.prototype);
+
+//project 17: count occurences in a string
+function duplicateCount(text){
+    let bagofwords = {};
+    let result = 0;
+    let textarr = text.toLowerCase().split("");
+    for(let i = 0; i < textarr.length; i++){
+      if(!bagofwords.hasOwnProperty(textarr[i])){
+        bagofwords[textarr[i]] = 1;
+      }else{
+        bagofwords[textarr[i]]++;
+      }
+    }
+    for(let keys in bagofwords){
+      if(bagofwords[keys] > 1){
+        result++;
+      }
+    }
+  
+    return result;
+  }
+
+
+  // assignment 21: countdown timer
+  function countdown(num) {
+    for (let i = num; i <+ 0; i--) {
+        setTimeout(() => console.log(i) , 1000);
+    }
+  }
+
+countdown(100)
+ //project 18: find the object
+function whatIsInAName(collection, source) {
+  let testResults = {}
+  let result = []
+  for(let i = 0; i < collection.length; i++){
+    for(let keys in source){
+     
+
+      
+      if(collection[i][keys] == source[keys] && testResults[i] !== false){
+       
+          testResults[i] = true
+
+      }else{
+        testResults[i] = false
+      }
+    }
+  }
+  for(let keys in testResults){
+    if(testResults[keys] === true){
+      result.push(collection[Number(keys)])
+    }
+  }
+
+  return result
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })
+
+// project 19: handmade map in this
+
+Array.prototype.myMap = function(callback) {
+  const newArray = [];
+  
+  for(let i = 0; i < this.length; i++){
+    newArray.push(callback(this[i], i, this))
+  }
+  
+  return newArray;
+};
+// project 20: handmade filter in this
+
+Array.prototype.myFilter = function(callback) {
+  const newArray = [];
+  
+  for(let i = 0; i < this.length; i++){
+    if(callback(this[i], i, this) == true){
+      newArray.push(this[i])
+    }
+  }
+  
+  return newArray;
+};
+
+// project 21: spinal tap case converter
+function spinalCase(str) {
+  let reg = /([a-z][a-z]+)|([A-Z][a-z]+)/g
+  let filteredStr = str.match(reg)
+  return filteredStr.join("-").toLowerCase()
+}
+
+spinalCase("This Is Spinal Tap");
+
+// project 22: binary to text converter
+function binaryAgent(str) {
+  let processedStr = str.split(" ")
+  for(let i = 0; i < processedStr.length; i++){
+    processedStr[i] = processedStr[i].split("").reverse()
+  }
+  for(let i = 0; i < processedStr.length; i++){
+
+    processedStr[i] = processedStr[i].reduce((total, value, index) => {
+      
+      total = Number(total)
+      total = total + Math.pow((2*value), index)
+
+      return total
+
+    })
+  }
+  processedStr = processedStr.map(value => String.fromCharCode(value))
+
+  return processedStr.join("")
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+//project 23: Arabic Number to Roman Numeral
+
+function convertToRoman(num) {
+  let romanNumerals = {
+    "M": 1000,
+    "CM": 900,
+    "D": 500,
+    "CD": 400,
+    "C": 100,
+    "XC": 90,
+    "L": 50,
+    "XL": 40, 
+    "X": 10,
+    "IX": 9,
+    "V": 5,
+    "IV": 4,
+    "I": 1
+  }
+  let romanNum = []
+  while(num != 0){
+    for(let key in romanNumerals){
+      if(romanNumerals[key] <= num){
+        if(num - romanNumerals[key] < 0){
+          break
+        }else{
+          num -= romanNumerals[key]
+          romanNum.push(key)
+          break;
+        }
+      }
+    }
+  }
+ return romanNum.join("");
+}
+
+convertToRoman(36);
+
+//project 24: ROT13
+
+function rot13(str) {
+  let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  let result = []
+  
+  for(let i = 0; i < str.length; i++){
+
+    if(alphabet.indexOf(str[i]) >= 0){
+      
+      let decryptedLetterNum = alphabet.indexOf(str[i]) - 13
+      if(decryptedLetterNum > alphabet.length){
+        decryptedLetterNum -=  alphabet.length
+      }else if(decryptedLetterNum < 0){
+        
+        decryptedLetterNum = alphabet.length + decryptedLetterNum
+        
+      }
+       
+      result.push(alphabet[decryptedLetterNum])
+    }else{
+      result.push(str[i])
+    }
+  }
+  console.log(result.join(""))
+  return result.join("");
+}
+
+rot13("SERR PBQR PNZC");
+
+// project 25: cash register
+
+function checkCashRegister(price, cash, cid) {
+  //creating important variables
+  let isOpen = false
+  let change = [];
+  let changeAmount = cash - price
+  // create a object for containing amount of each currency unit
+  let currencyAmount = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "ONE HUNDRED": 100
+  }
+
+  // reverse cid so that it is in decending order
+  cid = cid.reverse()
+  // check the cash-in-drawer(cid) to see if there is sufficient change
+  let changePresent = []
+  let changePresentValue = 0
+  // extracte all the values from cid
+  for(let i in cid){
+    changePresent.push(cid[i][1])
+  }
+
+  // reduce the value and check if it is greater than or equal to change amount
+  changePresentValue = changePresent.reduce((total, value) => total+value)
+  // check if change can be provided with small currency units
+  let changeReturnable = false
+  let smallChange = changePresent.slice(-4,)
+  for(let i in smallChange){
+    if(smallChange[i] >= changeAmount){
+      changeReturnable = true
+      break
+    }
+  }
+  if(changeAmount > 20){
+    changeReturnable = true
+  }
+  
+  if(changePresentValue >= changeAmount && changeReturnable){
+  
+  //continue the loop while change amount is not 0
+  while (changeAmount != 0) {
+    // iterate through the array
+    for (let currency in cid) {
+      // declare the current currency unit and amount to make my life easier
+      let currentCurrencyUnit = cid[currency][0]
+      let currentCurrencyAmount = cid[currency][1]
+
+      if (currencyAmount[currentCurrencyUnit] <= changeAmount && cid[currency][1] != 0) {
+        
+        //subtract currency amount from the change amount and also from the cash-in-drawer's current currency unit
+
+        changeAmount = Number((changeAmount - currencyAmount[currentCurrencyUnit]).toFixed(2))
+
+        currentCurrencyAmount = Number((currentCurrencyAmount - currencyAmount[currentCurrencyUnit]).toFixed(2))
+        cid[currency][1] = Number(currentCurrencyAmount)
+
+
+        // check if the currency unit is already in the array change or not
+        let isPresentAndIndex = {
+          "status": false,
+          "index": -1
+        }
+
+        for (let item in change) {
+
+          if (change[item][0] === currentCurrencyUnit) {
+            isPresentAndIndex["status"] = true
+            isPresentAndIndex["index"] = item
+          }
+        }
+        // if present then increment it by it's currency unit amount else add it in the change array with it's currency amount
+        if (isPresentAndIndex["status"]) {
+          change[isPresentAndIndex["index"]][1] += currencyAmount[currentCurrencyUnit]
+
+        } else {
+          change.push([currentCurrencyUnit, currencyAmount[currentCurrencyUnit]])
+        }
+
+        break
+      }
+      
+    }
+  }
+  
+  // scan the array to see the cash-in-drawer is empty or not after getting the sufficient amount of change
+  for(let index in cid){
+    if(cid[index][1] === 0){
+      continue
+    }else{
+      isOpen = true
+      break
+    }
+  }
+  //check the status  tosee if their is sufficient funds
+  
+
+    if(isOpen){
+      return {status:"OPEN", change:change}
+    }else{
+      // rounding all of the values in change to two spaces after the decimal point
+      change = change.map(value => {
+        if(!Number.isInteger(value[1])){
+          let roundedValue =value[1].toFixed(2)
+          if(roundedValue[roundedValue.length - 1] == "0"){
+            roundedValue = Number(Number(roundedValue).toFixed(1))
+            value[1] = roundedValue
+          }
+        }
+        return value
+      })
+
+      // check which currency units are not present and add them orderly
+      let completedChange = []
+      for(let key in currencyAmount){
+        let isTargetPresent = {
+          status : false,
+          index : 0
+        }
+        // saving the target index if it is present
+        for(let i in change){
+          if(key === change[i][0]){
+            isTargetPresent.status = true
+            isTargetPresent.index = i
+          }
+        }
+        if(isTargetPresent.status){
+          completedChange.push([change[isTargetPresent.index][0], change[isTargetPresent.index][1]])
+        }else{
+          completedChange.push([key, 0])
+        }
+      }
+ 
+      return {status:"CLOSED", change: completedChange}
+      }
+    
+  
+  }else{
+    return {status:"INSUFFICIENT_FUNDS", change: []}
+  }
+}
+
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
